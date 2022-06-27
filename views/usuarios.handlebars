@@ -1,0 +1,10 @@
+<h1>Usuarios registrados:</h1>
+<div class="usuarios-registrados">
+  {{#each usuarios}}
+    <div>Nome: <span class="bold">{{this.nome}}</span>  /  E-mail: {{this.email}}  /  Idade: {{this.idade}}  /  CPF: {{this.cpf}}</div>
+  {{/each}}
+</div>
+
+<div class="link">
+  <a href="/">Adicionar usuarios</a>
+</div>
