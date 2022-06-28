@@ -2,6 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
 const mysql = require('mysql')
+const pool = require('./db/connect')
 
 //dotenv
 require('dotenv').config()
@@ -35,7 +36,7 @@ app.post('/info/insertinfo', (req, res) => {
 
   const insert = `INSERT INTO registro (nome, email, idade, cpf) VALUES ('${nome}', '${email}', ${idade}, '${cpf}')`
 
-  con.query(insert, function (err) {
+  pool.query(insert, function (err) {
     if (err) {
       console.log(err)
     }
@@ -48,7 +49,7 @@ app.post('/info/insertinfo', (req, res) => {
 app.get('/usuarios', (req, res) => {
   const queryusuarios = 'SELECT * FROM registro'
 
-  con.query(queryusuarios, function (err, data) {
+  pool.query(queryusuarios, function (err, data) {
     if (err) {
       console.log(err)
       return
@@ -62,18 +63,4 @@ app.get('/usuarios', (req, res) => {
   })
 })
 
-const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: process.env.MYSQL_PASSWORD,
-  database: 'desafio'
-})
-
-con.connect(function (err) {
-  if (err) {
-    console.log(err)
-  }
-  console.log('Conectado!')
-
-  app.listen(3000)
-})
+app.listen(process.env.SERVER_PORT)
