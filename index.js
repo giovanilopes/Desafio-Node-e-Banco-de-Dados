@@ -1,8 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
-const mysql = require('mysql')
-const pool = require('./db/connect')
+const routes = require('./routes/routes')
 
 //dotenv
 require('dotenv').config()
@@ -22,45 +21,7 @@ app.set('view engine', 'handlebars')
 //css
 app.use(express.static('public'))
 
-//rota inicial
-app.get('/', function (req, res) {
-  res.render('home')
-})
-
-//puxando os dados do navegador para o mysql
-app.post('/info/insertinfo', (req, res) => {
-  const nome = req.body.nome
-  const email = req.body.email
-  const idade = req.body.idade
-  const cpf = req.body.cpf
-
-  const insert = `INSERT INTO registro (nome, email, idade, cpf) VALUES ('${nome}', '${email}', ${idade}, '${cpf}')`
-
-  pool.query(insert, function (err) {
-    if (err) {
-      console.log(err)
-    }
-
-    res.redirect('/')
-  })
-})
-
-//criando uma rota que mostre os usuarios registrados
-app.get('/usuarios', (req, res) => {
-  const queryusuarios = 'SELECT * FROM registro'
-
-  pool.query(queryusuarios, function (err, data) {
-    if (err) {
-      console.log(err)
-      return
-    }
-
-    const usuarios = data
-    console.log(usuarios)
-
-    //handlebars
-    res.render('usuarios', { usuarios })
-  })
-})
+//routes
+app.use(routes)
 
 app.listen(process.env.SERVER_PORT)
