@@ -1,0 +1,15 @@
+<div id="usersid">
+  <a href="/usuarios">Voltar</a>
+  <div class="container">
+    <h1>{{registro.nome}}</h1>
+    <p>E-mail: {{registro.email}}</p>
+    <p>Idade: {{registro.idade}}</p>
+    <p>CPF: {{registro.cpf}}</p>
+
+    <div class="actions">
+      <a href="/useredit/{{registro.id}}">Editar</a>
+      <form action="/usuarios/remove/{{registro.id}}" method="post">
+      <input type="submit" value="Remover"></form>
+    </div>
+  </div>
+</div>

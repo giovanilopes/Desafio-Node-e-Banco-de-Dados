@@ -40,3 +40,30 @@ h1 {
   text-align: center;
   padding: 10px;
 }
+
+/* barra de navegacao*/
+#navbar{
+  border-bottom: 1px solid #ccc;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+#navbar ul{
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+#navbar ul li{
+  margin-left: 1em;
+}
+
+.actions{
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.actions a {
+  margin-right: 1em;
+}

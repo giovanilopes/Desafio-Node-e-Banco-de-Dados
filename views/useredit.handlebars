@@ -1,0 +1,25 @@
+<h1>Edite suas informacoes</h1>
+<form action="/usuarios/updateduser" method="post" class="form">
+  <input type="hidden" name="id" id="{{registro.id}}">
+  <div class="form-control">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" placeholder="Digite seu nome" value="{{registro.nome}}">
+  </div>
+
+  <div class="form-control">
+    <label for="email">E-mail:</label>
+    <input type="text" name="email" placeholder="Digite seu e-mail" value="{{registro.email}}">
+  </div>
+
+  <div class="form-control">
+    <label for="idade">Idade:</label>
+    <input type="text" name="idade" placeholder="Digite sua idade" value="{{registro.idade}}">
+  </div>
+
+  <div class="form-control">
+    <label for="cpf">CPF:</label>
+    <input type="text" name="cpf" placeholder="Digite seu cpf" value="{{registro.cpf}}">
+  </div>
+
+  <input type="submit" value="Editar">
+</form>
